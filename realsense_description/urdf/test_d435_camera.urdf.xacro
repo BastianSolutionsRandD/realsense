@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<robot name="realsense2_camera" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:include filename="$(find realsense_description)/urdf/_d435.urdf.xacro"/>
+
+  <!--you only need the following xacro if you want to simulate the camera in gazebo-->
+  <xacro:include filename="$(find realsense_description)/urdf/_d435.gazebo.xacro" />
+  
+  <link name="base_link" />
+  <sensor_d435 parent="base_link" prefix="test_">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </sensor_d435>
+
+  <!--call the included xacro if you want to simulate the camera in gazebo-->
+  <xacro:d435_realsense_gazebo prefix="test_"
+  color_width="1920" color_height="1080"
+  color_update_rate="20" depth_update_rate="10"/>
+</robot>

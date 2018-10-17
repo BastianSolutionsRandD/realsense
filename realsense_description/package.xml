@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package>
+  <name>realsense_description</name>
+  <version>0.1.0</version>
+  <description>
+    realsense_description contains URDF files and meshes of Intel Realsense cameras
+  </description>
+  <author email="marq.razz@gmail.com">Marq Rasmussen</author>
+  <maintainer email="marq.razz@gmail.com">Marq Rasmussen</maintainer>
+  <license>BSD</license>
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>urdf</build_depend>
+  <build_depend>xacro</build_depend>
+  <run_depend>urdf</run_depend>
+  <run_depend>xacro</run_depend>
+</package>
