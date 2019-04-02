@@ -38,16 +38,15 @@ aluminum peripherial evaluation case.
     <joint name="${prefix}camera_joint" type="fixed">
       <xacro:insert_block name="origin" />
       <parent link="${parent}"/>
-      <child link="${prefix}camera_link" />
+      <child link="${prefix}camera_bottom_screw_link" />
     </joint>
 
-    <link name="${prefix}camera_link">
+    <link name="${prefix}camera_bottom_screw_link">
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
           <mesh filename="package://realsense_description/meshes/visual/d415.dae" />
         </geometry>
-        <material name="grey"/>
       </visual>
       <collision>
         <origin xyz="0.0 0.0 ${d415_cam_height/2}" rpy="0 0 0"/>
@@ -62,11 +61,18 @@ aluminum peripherial evaluation case.
         <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.000498940" iyz="0.0" izz="0.003879257" />
       </inertial>
     </link>
+
+    <link name="${prefix}camera_link"/>
+    <joint name="${prefix}camera_link_joint" type="fixed">
+      <origin xyz="${d415_cam_depth_px} ${d415_cam_depth_py} ${d415_cam_depth_pz}" rpy="0 0 0"/>
+      <parent link="${prefix}camera_bottom_screw_link"/>
+      <child link="${prefix}camera_link" />
+    </joint>
    
     <!-- camera depth joints and links -->
     <joint name="${prefix}camera_depth_joint" type="fixed">
       <origin xyz="${d415_cam_depth_px} ${d415_cam_depth_py} ${d415_cam_depth_pz}" rpy="0 0 0"/>
-      <parent link="${prefix}camera_link"/>
+      <parent link="${prefix}camera_bottom_screw_link"/>
       <child link="${prefix}camera_depth_frame" />
     </joint>
     <link name="${prefix}camera_depth_frame"/>

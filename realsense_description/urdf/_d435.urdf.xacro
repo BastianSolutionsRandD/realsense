@@ -47,7 +47,6 @@ aluminum peripherial evaluation case.
         <geometry>
           <mesh filename="package://realsense_description/meshes/visual/d435.dae" />
         </geometry>
-        <material name="grey"/>
       </visual>
       <collision>
         <origin xyz="0.0 0.0 ${d435_cam_height/2}" rpy="0 0 0"/>

@@ -4,10 +4,6 @@
 <xacro:macro name="d435_realsense_gazebo"
   params="prefix color_width color_height color_update_rate depth_update_rate">
 
-  <gazebo reference="${prefix}camera_link">
-    <material value="Gazebo/Grey" />
-  </gazebo>
-
   <gazebo reference="${prefix}camera_color_frame">
     <sensor type="depth" name="${prefix}">
       <always_on>true</always_on>
