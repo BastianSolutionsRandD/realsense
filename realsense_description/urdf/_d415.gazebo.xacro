@@ -12,7 +12,7 @@
         <horizontal_fov>${69.4*pi/180.0}</horizontal_fov>
         <image>
           <!-- openni_kinect plugin works only with BGR8 -->
-          <format>R8G8B8</format>
+          <format>B8G8R8</format>
           <width>${color_width}</width>
           <height>${color_height}</height>
         </image>
