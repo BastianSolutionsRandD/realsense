@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+
+<!--
+License: Apache 2.0. See LICENSE file in root directory.
+Copyright(c) 2017 Intel Corporation. All Rights Reserved
+
+This is the URDF model for the Intel RealSense 415 camera, in it's
+aluminum peripherial evaluation case.
+-->
+
+<robot name="sensor_d415e" xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="sensor_d415e" params="parent *origin prefix">
+  
+    <!-- The following values are approximate, and the camera node
+     publishing TF values with actual calibrated camera extrinsic values -->
+
+<xacro:property name="d415_cam_depth_px" value="0.0"/>
+<xacro:property name="d415_cam_depth_py" value="0.0"/>
+<xacro:property name="d415_cam_depth_pz" value="0.0"/>
+
+
+    <!-- The following values model the aluminum peripherial case for the
+    d415 camera, with the camera joint represented by the actual
+  	peripherial camera tripod mount -->
+    <!-- camera body, with origin at bottom screw mount -->
+    <joint name="${prefix}camera_joint" type="fixed">
+      <xacro:insert_block name="origin" />
+      <parent link="${parent}"/>
+      <child link="${prefix}camera_mount_link" />
+    </joint>
+
+    <link name="${prefix}camera_mount_link">
+      <visual>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+          <mesh filename="package://realsense_description/meshes/visual/FRAMOS_D415e_Camera.STL" />
+        </geometry>
+      </visual>
+      <collision>
+        <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
+        <geometry>
+        <mesh filename="package://realsense_description/meshes/visual/FRAMOS_D415e_Camera.STL" />
+        </geometry>
+      </collision>
+      <inertial>
+        <!-- The following are not reliable values, and should not be used for modeling -->
+        <mass value="0.564" />
+        <origin xyz="0 0 0" />
+        <inertia ixx="0.003881243" ixy="0.0" ixz="0.0" iyy="0.000498940" iyz="0.0" izz="0.003879257" />
+      </inertial>
+    </link>
+
+    <link name="${prefix}camera_link"/>
+    <joint name="${prefix}camera_link_joint" type="fixed">
+      <origin xyz="${d415_cam_depth_px} ${d415_cam_depth_py} ${d415_cam_depth_pz}" rpy="0 0 0"/>
+      <parent link="${prefix}camera_mount_link"/>
+      <child link="${prefix}camera_link"/>
+    </joint>
+   
+  </xacro:macro>
+</robot>
