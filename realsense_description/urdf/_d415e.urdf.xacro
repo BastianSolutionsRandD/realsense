@@ -33,13 +33,13 @@ aluminum peripherial evaluation case.
       <visual>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
-          <mesh filename="package://realsense_description/meshes/visual/FRAMOS_D415e_Camera.STL" />
+          <mesh filename="package://realsense_description/meshes/visual/FRAMOS_D415e_Camera.STL"  scale="0.001 0.001 0.001" />
         </geometry>
       </visual>
       <collision>
         <origin xyz="0.0 0.0 0.0" rpy="0 0 0"/>
         <geometry>
-        <mesh filename="package://realsense_description/meshes/visual/FRAMOS_D415e_Camera.STL" />
+        <mesh filename="package://realsense_description/meshes/visual/FRAMOS_D415e_Camera.STL"  scale="0.001 0.001 0.001" />
         </geometry>
       </collision>
       <inertial>
@@ -52,7 +52,7 @@ aluminum peripherial evaluation case.
 
     <link name="${prefix}camera_link"/>
     <joint name="${prefix}camera_link_joint" type="fixed">
-      <origin xyz="${d415_cam_depth_px} ${d415_cam_depth_py} ${d415_cam_depth_pz}" rpy="0 0 0"/>
+      <origin xyz="0.05 0.03 -0.01" rpy="0.05 0 0"/>
       <parent link="${prefix}camera_mount_link"/>
       <child link="${prefix}camera_link"/>
     </joint>
