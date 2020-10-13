@@ -52,7 +52,9 @@ aluminum peripherial evaluation case.
 
     <link name="${prefix}camera_link"/>
     <joint name="${prefix}camera_link_joint" type="fixed">
-      <origin xyz="0.05 0.03 -0.01" rpy="0.05 0 0"/>
+<!--      <origin xyz="0.05 0.03 -0.01" rpy="0.05 0 0"/>-->
+      <origin xyz="0.0 0.0 0.0" rpy="0.0 0 0"/>
+
       <parent link="${prefix}camera_mount_link"/>
       <child link="${prefix}camera_link"/>
     </joint>
